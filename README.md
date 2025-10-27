@@ -75,3 +75,50 @@ This two-part feature creates a seamless sharing experience.
 
 1.  **Creating the Link**: When a user clicks the share button in `QuoteCard.tsx`, the component constructs a URL that includes the current page's path plus a hash identifier (e.g., `.../index.html#quote-42`). This URL is then passed to the Web Share API.
 2.  **Handling the Link**: When the application loads, a `useEffect` hook in `App.tsx` checks if `window.location.hash` exists. If it does, it calls the `highlightQuote` function. This function finds the quote's DOM element by its ID, smoothly scrolls it into the center of the viewport, and temporarily applies a bright, attention-grabbing ring around it. This immediately draws the user's attention to the specific content that was shared with them.
+
+## 6. Deployment on GitHub Pages
+
+This project is perfectly suited for deployment on GitHub Pages because it is a **static site** that runs directly in the browser without needing a server or a "build" step.
+
+### Why is there no 'build' step?
+Many React projects use tools like Create React App or Vite, which require a `npm run build` command. That command compiles, bundles, and optimizes the code into static HTML, CSS, and JS files.
+
+This project is different. It uses **ES Modules** and an **import map** directly in the `index.html` file. This tells the browser how to load React and other libraries from a CDN on its own. The `.tsx` files are handled by the browser's capabilities. This simpler setup means you can deploy the source code files directly.
+
+### Step-by-Step Instructions
+
+1.  **Create a GitHub Repository**:
+    -   Go to GitHub and create a new **public** repository.
+    -   Give it a name (e.g., `words-of-giant`).
+    -   Do not initialize it with a README, as you already have one.
+
+2.  **Push Your Code**:
+    -   Open a terminal in your project's root folder.
+    -   Run the following commands to upload your code to the new repository. *Remember to replace `YOUR_USERNAME` and `YOUR_REPOSITORY_NAME`.*
+    ```bash
+    # Initialize a local git repository if you haven't already
+    git init -b main
+    
+    # Add all files to be tracked
+    git add .
+    
+    # Create your first commit
+    git commit -m "Initial commit"
+    
+    # Connect to your remote repository on GitHub
+    git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPOSITORY_NAME.git
+    
+    # Push your code to GitHub
+    git push -u origin main
+    ```
+
+3.  **Configure GitHub Pages**:
+    -   In your new repository on GitHub, go to the **"Settings"** tab.
+    -   In the left sidebar, click on **"Pages"**.
+    -   Under "Build and deployment", set the "Source" to **"Deploy from a branch"**.
+    -   Under "Branch", ensure `main` is selected and the folder is `/ (root)`.
+    -   Click **"Save"**.
+
+4.  **You're Live!**:
+    -   That's it! GitHub will start deploying your site. This usually takes 1-2 minutes.
+    -   The "Pages" settings page will display the public URL for your live site. It will be: `https://YOUR_USERNAME.github.io/YOUR_REPOSITORY_NAME/`

@@ -85,6 +85,10 @@ Many React projects use tools like Create React App or Vite, which require a `np
 
 This project is different. It uses **ES Modules** and an **import map** directly in the `index.html` file. This tells the browser how to load React and other libraries from a CDN on its own. The `.tsx` files are handled by the browser's capabilities. This simpler setup means you can deploy the source code files directly.
 
+The single most important configuration for this to work is using a **relative path** for the script in `index.html`:
+`<script type="module" src="./index.tsx"></script>`
+This has already been done, so the project is ready.
+
 ### Step-by-Step Instructions
 
 1.  **Create a GitHub Repository**:
